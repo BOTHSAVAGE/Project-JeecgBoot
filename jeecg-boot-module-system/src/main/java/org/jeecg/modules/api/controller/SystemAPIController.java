@@ -16,6 +16,14 @@ import java.util.Set;
 
 /**
  * 服务化 system模块 对外接口请求类
+ *
+ * controller的入参都是DTO,就是数据传输对象
+ * 可能是接口的原因，可能其他的controller放进来任然是vo
+ * 这里所有的入参都是使用@requestBody修饰的，应该多少有一点讲究
+ * 这里应该是的SpringMvc的部分，去分析一下dispatcherServlet1的构成以及其他原理之类的东西
+ * 还有spring的设计思想和Spring里面的代码编程思想
+ * 猜测springboot的事件驱动模型中运用到的观察者模型
+ * 就是有很强的系统规范，一会儿看看类图
  */
 @RestController
 @RequestMapping("/sys/api")
@@ -47,6 +55,7 @@ public class SystemAPIController {
     }
 
     /**
+     * todo 4月13日
      * 通过模板发送消息
      * @param message 使用构造器赋值参数
      */

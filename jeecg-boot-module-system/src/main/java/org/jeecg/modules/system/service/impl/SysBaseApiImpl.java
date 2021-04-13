@@ -58,7 +58,7 @@ import java.util.*;
  *
  * 当前普通的API的实现类，注入的普通的组件
  * 日志服务使用的是lombok的简单log
- * 在service层直接调用的mapper
+ * 在service层直接调用的mapper和service，层次划分不是特别的严谨
  *
  */
 @Slf4j
@@ -71,16 +71,18 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	 * @Resource是byName
 	 * 效果一样，参数不同高级功能不同
 	 */
+
+
 	@Autowired
-	private ISysMessageTemplateService sysMessageTemplateService;
+	private ISysMessageTemplateService sysMessageTemplateService;//todo 消息模板服务 -> 4.13
 	@Resource
-	private SysLogMapper sysLogMapper;
+	private SysLogMapper sysLogMapper;//todo 日志 -> 4.13
 	@Resource
-	private SysUserMapper userMapper;
+	private SysUserMapper userMapper;//todo 用户 -> 4.13
 	@Resource
-	private SysUserRoleMapper sysUserRoleMapper;
+	private SysUserRoleMapper sysUserRoleMapper;//todo 角色 -> 4.13
 	@Autowired
-	private ISysDepartService sysDepartService;
+	private ISysDepartService sysDepartService; //
 	@Autowired
 	private ISysDictService sysDictService;
 	@Resource
@@ -88,7 +90,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	@Resource
 	private SysAnnouncementSendMapper sysAnnouncementSendMapper;
 	@Resource
-    private WebSocket webSocket;
+    private WebSocket webSocket;//todo websocket客户端 -> 4.13
 	@Resource
 	private SysRoleMapper roleMapper;
 	@Resource
@@ -317,14 +319,20 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 				message.getBusId());
 	}
 
+	/**
+	 * todo 4.13
+	 * 3通过模板发送消息
+	 * @param message 使用构造器赋值参数
+	 */
 	@Override
 	public void sendTemplateAnnouncement(TemplateMessageDTO message) {
+		//抽取数据
 		String templateCode = message.getTemplateCode();
 		String title = message.getTitle();
 		Map<String,String> map = message.getTemplateParam();
 		String fromUser = message.getFromUser();
 		String toUser = message.getToUser();
-
+		//在数据库抽取数据
 		List<SysMessageTemplate> sysSmsTemplates = sysMessageTemplateService.selectByCode(templateCode);
 		if(sysSmsTemplates==null||sysSmsTemplates.size()==0){
 			throw new JeecgBootException("消息模板不存在，模板编码："+templateCode);
@@ -354,14 +362,14 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 		announcement.setSendTime(new Date());
 		announcement.setMsgCategory(CommonConstant.MSG_CATEGORY_2);
 		announcement.setDelFlag(String.valueOf(CommonConstant.DEL_FLAG_0));
-		sysAnnouncementMapper.insert(announcement);
+		sysAnnouncementMapper.insert(announcement);//又是使用的通用mapper
 		// 2.插入用户通告阅读标记表记录
 		String userId = toUser;
 		String[] userIds = userId.split(",");
 		String anntId = announcement.getId();
 		for(int i=0;i<userIds.length;i++) {
 			if(oConvertUtils.isNotEmpty(userIds[i])) {
-				SysUser sysUser = userMapper.getUserByName(userIds[i]);
+				SysUser sysUser = userMapper.getUserByName(userIds[i]);//通用毛偶尔
 				if(sysUser==null) {
 					continue;
 				}
@@ -370,6 +378,10 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 				announcementSend.setUserId(sysUser.getId());
 				announcementSend.setReadFlag(CommonConstant.NO_READ_FLAG);
 				sysAnnouncementSendMapper.insert(announcementSend);
+
+				//以上为业务
+
+				//todo 下面为websocket 后台消息推送
 				JSONObject obj = new JSONObject();
 				obj.put(WebsocketConst.MSG_CMD, WebsocketConst.CMD_USER);
 				obj.put(WebsocketConst.MSG_USER_ID, sysUser.getId());

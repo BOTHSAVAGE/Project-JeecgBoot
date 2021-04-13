@@ -15,8 +15,6 @@ import org.jeecg.modules.message.entity.SysMessageTemplate;
  *
  * 继承JeecgService的目的是为了
  * 这个项目的service 都要参照 一个service规范
- *
- *
  */
 public interface ISysMessageTemplateService extends JeecgService<SysMessageTemplate> {
     List<SysMessageTemplate> selectByCode(String code);

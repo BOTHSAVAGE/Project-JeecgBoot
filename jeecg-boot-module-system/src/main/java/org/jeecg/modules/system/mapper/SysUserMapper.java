@@ -19,6 +19,11 @@ import java.util.List;
  *
  * @Author scott
  * @since 2018-12-20
+ *
+ * todo 4.13
+ *
+ * 使用了basemapper的好处，不用担心不注意改动到最基础的操作
+ * 使用代码生成工具的好处，可以一键生成resultmap等
  */
 public interface SysUserMapper extends BaseMapper<SysUser> {
 	/**

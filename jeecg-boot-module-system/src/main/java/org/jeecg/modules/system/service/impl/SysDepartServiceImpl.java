@@ -33,6 +33,10 @@ import io.netty.util.internal.StringUtil;
  * 
  * @Author Steve
  * @Since 2019-01-22
+ *
+ * todo 4.13
+ * service实现类
+ * 一样的套路使用的是
  */
 @Service
 public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart> implements ISysDepartService {

@@ -15,14 +15,19 @@ import lombok.experimental.Accessors;
  * @Date:  2019-04-09
  * @Version: V1.0
  *
+ *
+ *
+ *
  * @Accessors(chain = true)的目的是为了方便级联操作，set会返回当前对象
- *
- *
  * 当前实体类和MP+绑定
  * @TableName 为mybaits+的注解
- *
  * @Excel注解的目的是方便导出Excle文件
  * 该注解为自定义注解，内部原来应该不复杂，但是思想可以，后面研究一下可不可以做POI的高级操作
+ * MP+在java中使用的是驼峰，在mysql中是下划线
+ * 大部分都是这个规范，
+ * Mysql这样写的目的是因为在win中mysql无法区分大小写
+ * 还有这里的注解就只有一个@TableName
+ * 说明没有太大的问题，只要加了table注解就会马上的自动匹配
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

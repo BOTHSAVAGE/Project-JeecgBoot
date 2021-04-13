@@ -25,18 +25,26 @@ import lombok.extern.slf4j.Slf4j;
  * @Author scott
  * @Date 2019/11/29 9:41
  * @Description: 此注解相当于设置访问URL
+ *
+ * todo 4 月 13 日
+ * http://doc.jeecg.com/2044163
+ * 总体来说的还是不难
+ * ServerEndpoint这是一个特殊的注解，javax提供的目的就是为了websocket使用的
+ * 这个websocket可以看作为一个工具类
  */
 @Component
 @Slf4j
 @ServerEndpoint("/websocket/{userId}") //此注解相当于设置访问URL
 public class WebSocket {
 
+    //websocket中的session
     private Session session;
 
     private String userId;
 
     private static final String REDIS_TOPIC_NAME = "socketHandler";
 
+    //注入的redis相关的服务
     @Resource
     private JeecgRedisClient jeecgRedisClient;
 

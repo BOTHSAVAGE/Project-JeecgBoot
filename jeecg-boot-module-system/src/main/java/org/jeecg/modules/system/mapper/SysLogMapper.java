@@ -16,6 +16,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  *
  * @Author zhangweijian
  * @since 2018-12-26
+ *
+ * todo 4.13
+ * 这里是写在了XML中
  */
 public interface SysLogMapper extends BaseMapper<SysLog> {
 

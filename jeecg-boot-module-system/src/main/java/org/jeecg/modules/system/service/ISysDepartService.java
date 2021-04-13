@@ -13,6 +13,10 @@ import java.util.List;
  * 
  * @Author:Steve
  * @Since：   2019-01-22
+ *
+ * todo 4.13
+ *
+ * 继承通用service 里面的mapper也是继承的通用mapper
  */
 public interface ISysDepartService extends IService<SysDepart>{
 

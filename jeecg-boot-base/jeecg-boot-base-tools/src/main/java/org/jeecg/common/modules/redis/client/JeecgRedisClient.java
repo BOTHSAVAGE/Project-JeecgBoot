@@ -9,10 +9,13 @@ import javax.annotation.Resource;
 
 /**
  * redis客户端
+ *
+ * 这个类的目的是什么 todo 4.13？
  */
 @Configuration
 public class JeecgRedisClient {
 
+    //注入传统的redis模板
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
