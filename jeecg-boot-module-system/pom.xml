@@ -8,8 +8,10 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
+	<!--核心启动模块-->
 	<artifactId>jeecg-boot-module-system</artifactId>
 
+	<!--指定仓库-->
 	<repositories>
 		<repository>
 			<id>aliyun</id>
@@ -30,6 +32,7 @@
 	</repositories>
 
 	<dependencies>
+		<!--内部依赖-->
 		<dependency>
 			<groupId>org.jeecgframework.boot</groupId>
 			<artifactId>jeecg-system-local-api</artifactId>
