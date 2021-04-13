@@ -7,6 +7,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @Author: dangzhenghui@163.com
  * @Date: 2019-4-21 8:13
  * @Version: 1.0
+ *
+ * Iservice 是MP+的通用增删改查Service服务层
+ * 要传入的T
+ * T必须满足MP+的规范
  */
 public interface JeecgService<T> extends IService<T> {
 }
