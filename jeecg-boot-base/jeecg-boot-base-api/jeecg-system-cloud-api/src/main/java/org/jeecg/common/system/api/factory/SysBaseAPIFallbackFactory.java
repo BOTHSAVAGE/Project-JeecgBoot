@@ -5,6 +5,9 @@ import org.jeecg.common.system.api.ISysBaseAPI;
 import org.jeecg.common.system.api.fallback.SysBaseAPIFallback;
 import org.springframework.stereotype.Component;
 
+/**
+ * 熔断降级组件
+ */
 @Component
 public class SysBaseAPIFallbackFactory implements FallbackFactory<ISysBaseAPI> {
 

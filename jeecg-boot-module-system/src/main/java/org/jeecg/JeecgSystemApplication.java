@@ -1,17 +1,12 @@
 package org.jeecg;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.Context;
-import org.apache.tomcat.util.scan.StandardJarScanner;
 import org.jeecg.common.util.oConvertUtils;
 import org.springframework.boot.SpringApplication;
-//import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
@@ -24,6 +19,11 @@ import java.net.UnknownHostException;
 @SpringBootApplication
 public class JeecgSystemApplication extends SpringBootServletInitializer {
 
+    /**
+     * 如此配置打包后可以war包才可在tomcat下使用
+     * @param application
+     * @return
+     */
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(JeecgSystemApplication.class);
@@ -31,9 +31,9 @@ public class JeecgSystemApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) throws UnknownHostException {
         ConfigurableApplicationContext application = SpringApplication.run(JeecgSystemApplication.class, args);
-        Environment env = application.getEnvironment();
+        Environment env = application.getEnvironment();//应用环境对象
         String ip = InetAddress.getLocalHost().getHostAddress();
-        String port = env.getProperty("server.port");
+        String port = env.getProperty("server.port");//配置文件读取
         String path = oConvertUtils.getString(env.getProperty("server.servlet.context-path"));
         log.info("\n----------------------------------------------------------\n\t" +
                 "Application Jeecg-Boot is running! Access URLs:\n\t" +
