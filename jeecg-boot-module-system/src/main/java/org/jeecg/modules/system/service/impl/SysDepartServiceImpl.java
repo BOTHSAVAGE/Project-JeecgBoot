@@ -40,6 +40,7 @@ import io.netty.util.internal.StringUtil;
  * 先接口继承通用接口
  * 实现类继承通用实现类传入mapper和实体类，再去实现接口
  * 比较好理解
+ * 就是一个cacheable可以看一下
  */
 @Service
 public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart> implements ISysDepartService {
@@ -95,6 +96,7 @@ public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart
 	@Cacheable(value = CacheConstant.SYS_DEPARTS_CACHE)
 	@Override
 	public List<SysDepartTreeModel> queryTreeList() {
+	    //mp+独有的query表达式，这里使用1.8的新特性
 		LambdaQueryWrapper<SysDepart> query = new LambdaQueryWrapper<SysDepart>();
 		query.eq(SysDepart::getDelFlag, CommonConstant.DEL_FLAG_0.toString());
 		query.orderByAsc(SysDepart::getDepartOrder);
@@ -104,6 +106,11 @@ public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart
 		return listResult;
 	}
 
+    /**
+     * 部门数据不会经常改变，所以这里使用的是缓存
+     * 猜测缓存应该可以通过@configuration配置为redis之类的
+     * @return
+     */
 	@Cacheable(value = CacheConstant.SYS_DEPART_IDS_CACHE)
 	@Override
 	public List<DepartIdModel> queryDepartIdTreeList() {
@@ -118,6 +125,8 @@ public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart
 
 	/**
 	 * saveDepartData 对应 add 保存用户在页面添加的新的部门对象数据
+     * @Transactional 事务管理，保存
+     *
 	 */
 	@Override
 	@Transactional
@@ -227,6 +236,7 @@ public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart
 
 	/**
 	 * updateDepartDataById 对应 edit 根据部门主键来更新对应的部门数据
+     * 更新也有事务
 	 */
 	@Override
 	@Transactional
@@ -241,7 +251,11 @@ public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart
 		}
 
 	}
-	
+
+    /**
+     * 这里默认就是Exception吧
+     * @param ids
+     */
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void deleteBatchWithChildren(List<String> ids) {

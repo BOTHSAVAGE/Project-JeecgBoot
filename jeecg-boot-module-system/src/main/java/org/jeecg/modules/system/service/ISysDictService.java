@@ -17,6 +17,8 @@ import org.jeecg.modules.system.model.TreeSelectModel;
  *
  * @Author zhangweijian
  * @since 2018-12-28
+ *
+ *  一般的管理系统都有大量的字典表
  */
 public interface ISysDictService extends IService<SysDict> {
 

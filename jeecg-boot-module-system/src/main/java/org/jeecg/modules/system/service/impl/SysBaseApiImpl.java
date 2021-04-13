@@ -82,7 +82,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	@Resource
 	private SysUserRoleMapper sysUserRoleMapper;//todo 角色 -> 4.13
 	@Autowired
-	private ISysDepartService sysDepartService; //
+	private ISysDepartService sysDepartService; //todo 部门服务 -> 4.13
 	@Autowired
 	private ISysDictService sysDictService;
 	@Resource
