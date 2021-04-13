@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  * JeecgServiceImpl的目的为了抽取整个系统的service层的公共方法
  * 这里没有公共方法所以没有抽取
+ * 测试
  */
 @Slf4j
 public class JeecgServiceImpl<M extends BaseMapper<T>, T extends JeecgEntity> extends ServiceImpl<M, T> implements JeecgService<T> {
