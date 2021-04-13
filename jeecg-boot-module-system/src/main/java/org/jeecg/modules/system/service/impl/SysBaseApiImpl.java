@@ -55,12 +55,22 @@ import java.util.*;
  * @Author: scott
  * @Date:2019-4-20 
  * @Version:V1.0
+ *
+ * 当前普通的API的实现类，注入的普通的组件
+ * 日志服务使用的是lombok的简单log
+ * 在service层直接调用的mapper
+ *
  */
 @Slf4j
 @Service
 public class SysBaseApiImpl implements ISysBaseAPI {
 	/** 当前系统数据库类型 */
 	private static String DB_TYPE = "";
+	/**
+	 * @Autowired是byType
+	 * @Resource是byName
+	 * 效果一样，参数不同高级功能不同
+	 */
 	@Autowired
 	private ISysMessageTemplateService sysMessageTemplateService;
 	@Resource

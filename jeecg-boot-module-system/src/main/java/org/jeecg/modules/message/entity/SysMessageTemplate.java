@@ -14,6 +14,15 @@ import lombok.experimental.Accessors;
  * @Author: jeecg-boot
  * @Date:  2019-04-09
  * @Version: V1.0
+ *
+ * @Accessors(chain = true)的目的是为了方便级联操作，set会返回当前对象
+ *
+ *
+ * 当前实体类和MP+绑定
+ * @TableName 为mybaits+的注解
+ *
+ * @Excel注解的目的是方便导出Excle文件
+ * 该注解为自定义注解，内部原来应该不复杂，但是思想可以，后面研究一下可不可以做POI的高级操作
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

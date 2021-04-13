@@ -13,10 +13,16 @@ import java.util.List;
  * @Author: jeecg-boot
  * @Date:  2019-04-09
  * @Version: V1.0
+ *
+ * 先继承ServiceImpl，在是实现Iservice
+ * 层次划分的十分的清晰
  */
 @Service
 public class SysMessageTemplateServiceImpl extends JeecgServiceImpl<SysMessageTemplateMapper, SysMessageTemplate> implements ISysMessageTemplateService {
 
+    /**
+     * 该mapper基类为BaseMapper
+     */
     @Autowired
     private SysMessageTemplateMapper sysMessageTemplateMapper;
 
