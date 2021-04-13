@@ -36,11 +36,17 @@ import io.netty.util.internal.StringUtil;
  *
  * todo 4.13
  * service实现类
- * 一样的套路使用的是
+ * 一样的套路
+ * 先接口继承通用接口
+ * 实现类继承通用实现类传入mapper和实体类，再去实现接口
+ * 比较好理解
  */
 @Service
 public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart> implements ISysDepartService {
 
+	/**
+	 * 引入要实现的mapper
+	 */
 	@Autowired
 	private SysUserDepartMapper userDepartMapper;
 	@Autowired
@@ -56,9 +62,11 @@ public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart
 
 	@Override
 	public List<SysDepartTreeModel> queryMyDeptTreeList(String departIds) {
-		//根据部门id获取所负责部门
-		LambdaQueryWrapper<SysDepart> query = new LambdaQueryWrapper<SysDepart>();
+		//mp+才有LambdaQueryWrapper
+		LambdaQueryWrapper<SysDepart> query = new LambdaQueryWrapper<SysDepart>();//根据部门id获取所负责部门
 		String[] codeArr = this.getMyDeptParentOrgCode(departIds);
+
+		//下面就写mp+的表达式
 		for(int i=0;i<codeArr.length;i++){
 			query.or().likeRight(SysDepart::getOrgCode,codeArr[i]);
 		}
@@ -73,13 +81,16 @@ public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart
 				}
 			}
 		}
-		// 调用wrapTreeDataToTreeList方法生成树状数据
+		// 调用wrapTreeDataToTreeList方法生成树状数据 todo 就是list 套list
 		List<SysDepartTreeModel> listResult = FindsDepartsChildrenUtil.wrapTreeDataToTreeList(listDepts);
 		return listResult;
 	}
 
 	/**
 	 * queryTreeList 对应 queryTreeList 查询所有的部门数据,以树结构形式响应给前端
+	 *
+	 * todo Cacheable 同一入参返回同一结果   CacheConstant.SYS_DEPARTS_CACHE指定缓存的ID 这个东西爱是对于静态数据来说还是挺有用的
+	 * 就是不知道是不是分布式的
 	 */
 	@Cacheable(value = CacheConstant.SYS_DEPARTS_CACHE)
 	@Override
