@@ -14,6 +14,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  *
  * @Author scott
  * @since 2018-12-19
+ *
+ * todo 4.14
+ *
  */
 public interface SysRoleMapper extends BaseMapper<SysRole> {
 

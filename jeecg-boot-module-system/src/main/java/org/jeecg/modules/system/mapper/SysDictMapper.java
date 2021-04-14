@@ -24,6 +24,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  *
  * @Author zhangweijian
  * @since 2018-12-28
+ *
+ * todo 4.14
+ * 这里的mapper直接继承了通用mapper
+ * 而mapper中sql的实现是使用的xml和注解混合的方式
  */
 public interface SysDictMapper extends BaseMapper<SysDict> {
 	

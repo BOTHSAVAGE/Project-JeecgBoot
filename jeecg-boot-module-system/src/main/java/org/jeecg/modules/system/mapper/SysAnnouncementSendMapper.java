@@ -14,6 +14,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * @Author: jeecg-boot
  * @Date:  2019-02-21
  * @Version: V1.0
+ *
+ * todo 4.14
+ * 依然使用mp+的开发规范
+ * 自定义的sql在xml中
+ * 可以注意一下@Param的使用
+ * 详细研究他们的用法
  */
 public interface SysAnnouncementSendMapper extends BaseMapper<SysAnnouncementSend> {
 

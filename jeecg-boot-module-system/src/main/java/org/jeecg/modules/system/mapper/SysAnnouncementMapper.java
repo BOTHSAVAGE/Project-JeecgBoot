@@ -13,6 +13,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * @Author: jeecg-boot
  * @Date:  2019-01-02
  * @Version: V1.0
+ *
+ * todo 4.14
+ * mp+开发规范
+ * 继承通用mapper
+ * 然后传入泛型t
+ * T也要满足开发规范
  */
 public interface SysAnnouncementMapper extends BaseMapper<SysAnnouncement> {
 

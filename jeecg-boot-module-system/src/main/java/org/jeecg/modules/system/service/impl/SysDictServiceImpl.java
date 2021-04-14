@@ -34,11 +34,24 @@ import java.util.stream.Collectors;
  *
  * @Author zhangweijian
  * @since 2018-12-28
+ *
+ * todo 4.14
+ * 接口的实现类
+ * 继承通用接口实MP+规范
+ * 传入通用mapper和实体类，实体类的话要使用mp规范，也就是说要指明table等
+ * 然后再实现接口
+ * 可以看到因为这里继承了一个类
+ * 所以ISysDictService里面的通用接口可以看作是已经实现了的，所以这里的继承是必不可少的
+ * 在service层调用log
+ * 使用的是的debug模式的调用log
+ * 特别注意的就是@transcational和@cacheable
+ * 其他还好
  */
 @Service
 @Slf4j
 public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDict> implements ISysDictService {
 
+	//自动注入
     @Autowired
     private SysDictMapper sysDictMapper;
     @Autowired
@@ -48,6 +61,9 @@ public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDict> impl
 	 * 通过查询指定code 获取字典
 	 * @param code
 	 * @return
+	 * 这里的key代表就是入参
+	 * value代表的是cache的名称
+	 * 
 	 */
 	@Override
 	@Cacheable(value = CacheConstant.SYS_DICT_CACHE,key = "#code")

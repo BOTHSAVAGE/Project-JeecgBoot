@@ -18,7 +18,14 @@ import org.jeecg.modules.system.model.TreeSelectModel;
  * @Author zhangweijian
  * @since 2018-12-28
  *
+ *  todo 4.14
  *  一般的管理系统都有大量的字典表
+ *  这里可以看作为一个工具类
+ *  继承通用service接口传入T
+ *  然后再写了一些额外的接口去实现
+ *  @Deprecated在大项目中常见用来标注已经废弃了的方法
+ *
+ *
  */
 public interface ISysDictService extends IService<SysDict> {
 

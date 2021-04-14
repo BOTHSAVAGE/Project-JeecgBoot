@@ -80,19 +80,19 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	@Resource
 	private SysUserMapper userMapper;//todo 用户 -> 4.13
 	@Resource
-	private SysUserRoleMapper sysUserRoleMapper;//todo 角色 -> 4.13
+	private SysUserRoleMapper sysUserRoleMapper;//todo 角色用户 -> 4.13
 	@Autowired
 	private ISysDepartService sysDepartService; //todo 部门服务 -> 4.13
 	@Autowired
-	private ISysDictService sysDictService;
+	private ISysDictService sysDictService;//todo 字典服务 -> 4.14
 	@Resource
-	private SysAnnouncementMapper sysAnnouncementMapper;
+	private SysAnnouncementMapper sysAnnouncementMapper;//todo 系统通告 -> 4.14
 	@Resource
-	private SysAnnouncementSendMapper sysAnnouncementSendMapper;
+	private SysAnnouncementSendMapper sysAnnouncementSendMapper;//todo 用户通告阅读标记 -> 4.14
 	@Resource
     private WebSocket webSocket;//todo websocket客户端 -> 4.13
 	@Resource
-	private SysRoleMapper roleMapper;
+	private SysRoleMapper roleMapper;//todo 角色 -> 4.13
 	@Resource
 	private SysDepartMapper departMapper;
 	@Resource

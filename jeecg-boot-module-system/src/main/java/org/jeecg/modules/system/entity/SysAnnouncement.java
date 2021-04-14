@@ -17,6 +17,11 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @Author: jeecg-boot
  * @Date:  2019-01-02
  * @Version: V1.0
+ *
+ * todo 4.14
+ * mybatisplus下的TableName，指定表
+ * TableId的使用
+ * 自定义注解的使用
  */
 @Data
 @TableName("sys_announcement")

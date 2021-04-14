@@ -13,6 +13,9 @@ import java.util.List;
  *
  * @Author zhangweijian
  * @since 2018-12-28
+ *
+ * todo 4.14
+ * 直接采用注解的方式来描述sql语句
  */
 public interface SysDictItemMapper extends BaseMapper<SysDictItem> {
     @Select("SELECT * FROM sys_dict_item WHERE DICT_ID = #{mainId} order by sort_order asc, item_value asc")
