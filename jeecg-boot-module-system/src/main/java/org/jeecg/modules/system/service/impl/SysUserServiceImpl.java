@@ -67,6 +67,18 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	@Resource
 	private BaseCommonService baseCommonService;//todo 通用服务 -> 4.14
 
+	/**
+	 * @param username
+	 * @param oldpassword
+	 * @param newpassword
+	 * @param confirmpassword
+	 * @return
+	 *
+	 * todo 4.14
+	 * CacheEvict的目的是为了清空缓存
+	 * 当重置密码的时候，重置缓存中的用户信息
+	 * 业务逻辑清晰
+	 */
     @Override
     @CacheEvict(value = {CacheConstant.SYS_USERS_CACHE}, allEntries = true)
     public Result<?> resetPassword(String username, String oldpassword, String newpassword, String confirmpassword) {
@@ -85,6 +97,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         this.userMapper.update(new SysUser().setPassword(password), new LambdaQueryWrapper<SysUser>().eq(SysUser::getId, user.getId()));
         return Result.ok("密码重置成功!");
     }
+
+
+    //todo ----------------------------------------------------------------------以下的业务逻辑清晰
+	//数据库地1增删改最好都是用@transcational
+
+
 
     @Override
     @CacheEvict(value = {CacheConstant.SYS_USERS_CACHE}, allEntries = true)
@@ -257,6 +275,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
 	@Override
 	public IPage<SysUser> getUserByDepartIdAndQueryWrapper(Page<SysUser> page, String departId, QueryWrapper<SysUser> queryWrapper) {
+		//todo 4.14
+		//这里使用了mybatisplus中的wrapper方法
 		LambdaQueryWrapper<SysUser> lambdaQueryWrapper = queryWrapper.lambda();
 
 		lambdaQueryWrapper.eq(SysUser::getDelFlag, CommonConstant.DEL_FLAG_0);
@@ -326,6 +346,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 		}
 		//查询已关联部门
 		List<SysUserDepart> userDepartList = sysUserDepartMapper.selectList(new QueryWrapper<SysUserDepart>().lambda().eq(SysUserDepart::getUserId, user.getId()));
+
+		//todo  这里的lamda表达式用得特别的漂亮
 		if(userDepartList != null && userDepartList.size()>0){
 			for(SysUserDepart depart : userDepartList ){
 				//修改已关联部门删除部门用户角色关系
