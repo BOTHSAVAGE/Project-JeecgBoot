@@ -9,6 +9,11 @@ import org.jeecg.modules.system.entity.SysGatewayRoute;
  * @Author: jeecg-boot
  * @Date:   2020-05-26
  * @Version: V1.0
+ *
+ * todo 4.14
+ * 这里应该是zuul中的路由，也就是微服务
+ * 为什么要把路由放在redis中操作
+ * 这个需求值得研究
  */
 public interface ISysGatewayRouteService extends IService<SysGatewayRoute> {
 

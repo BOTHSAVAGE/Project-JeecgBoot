@@ -28,13 +28,17 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
  *
  * @Author huangzhilin
  * @since 2019-04-01
+ *
+ * todo 4.14
+ * 使用MP+的通用写法
+ * 先继承再实现
  */
 @Service
 public class SysPermissionDataRuleImpl extends ServiceImpl<SysPermissionDataRuleMapper, SysPermissionDataRule>
 		implements ISysPermissionDataRuleService {
 
 	@Resource
-	private SysPermissionMapper sysPermissionMapper;
+	private SysPermissionMapper sysPermissionMapper;//todo 4.14
 
 	/**
 	 * 根据菜单id查询其对应的权限数据
@@ -42,7 +46,7 @@ public class SysPermissionDataRuleImpl extends ServiceImpl<SysPermissionDataRule
 	@Override
 	public List<SysPermissionDataRule> getPermRuleListByPermId(String permissionId) {
 		LambdaQueryWrapper<SysPermissionDataRule> query = new LambdaQueryWrapper<SysPermissionDataRule>();
-		query.eq(SysPermissionDataRule::getPermissionId, permissionId);
+		query.eq(SysPermissionDataRule::getPermissionId, permissionId);//todo 在项目中频繁的使用::和lamda表达式
 		query.orderByDesc(SysPermissionDataRule::getCreateTime);
 		List<SysPermissionDataRule> permRuleList = this.list(query);
 		return permRuleList;
@@ -67,7 +71,7 @@ public class SysPermissionDataRuleImpl extends ServiceImpl<SysPermissionDataRule
 		//update-end--Author:scott  Date:20191119  for：数据权限失效问题处理--------------------
 		Set<String> set = new HashSet<String>();
 		for (String ids : idsList) {
-			if(oConvertUtils.isEmpty(ids)) {
+			if(oConvertUtils.isEmpty(ids)) {//todo 这里使用通用转换思想
 				continue;
 			}
 			String[] arr = ids.split(",");

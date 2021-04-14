@@ -8,6 +8,9 @@ import org.jeecg.modules.system.entity.SysGatewayRoute;
  * @Author: jeecg-boot
  * @Date:   2020-05-26
  * @Version: V1.0
+ *
+ * todo 4.14
+ * mp+开发
  */
 public interface SysGatewayRouteMapper extends BaseMapper<SysGatewayRoute> {
 

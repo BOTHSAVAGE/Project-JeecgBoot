@@ -13,6 +13,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  *
  * @Author huangzhilin
  * @since 2019-04-01
+ *
+ * todo 4.14
+ * 接口使用但是MP+的通用接口规范，线继承通用service，在实现的时候再去继承
  */
 public interface ISysPermissionDataRuleService extends IService<SysPermissionDataRule> {
 

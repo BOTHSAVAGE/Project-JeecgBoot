@@ -21,7 +21,13 @@ import java.util.Date;
  * @Author: jeecg-boot
  * @Date:   2020-05-26
  * @Version: V1.0
- */
+ *
+ * todo 4.14
+ * 路由管理的实体类
+ * 常用的实体类定义方式
+ *
+ *
+ * */
 @Data
 @TableName("sys_gateway_route")
 @Accessors(chain = true)

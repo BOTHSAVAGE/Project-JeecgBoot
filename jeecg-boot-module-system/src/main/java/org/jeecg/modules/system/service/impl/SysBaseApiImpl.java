@@ -56,6 +56,7 @@ import java.util.*;
  * @Date:2019-4-20 
  * @Version:V1.0
  *
+ * todo 4.13
  * 当前普通的API的实现类，注入的普通的组件
  * 日志服务使用的是lombok的简单log
  * 在service层直接调用的mapper和service，层次划分不是特别的严谨
@@ -103,10 +104,11 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	@Autowired
 	private ISysUserDepartService sysUserDepartService;//todo 用户组织机构 -> 4.14
 	@Resource
-	private SysPermissionMapper sysPermissionMapper;
+	private SysPermissionMapper sysPermissionMapper;//todo 4.14
 	@Autowired
-	private ISysPermissionDataRuleService sysPermissionDataRuleService;
+	private ISysPermissionDataRuleService sysPermissionDataRuleService;//todo 菜单权限规则 -> 4.14
 
+	//todo 获取用户名称使用的是缓存
 	@Override
 	@Cacheable(cacheNames=CacheConstant.SYS_USERS_CACHE, key="#username")
 	public LoginUser getUserByName(String username) {
@@ -118,7 +120,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 		if(sysUser==null) {
 			return null;
 		}
-		BeanUtils.copyProperties(sysUser, loginUser);
+		BeanUtils.copyProperties(sysUser, loginUser);// todo 类之间属性的复制，大多使用beanutils
 		return loginUser;
 	}
 
@@ -136,7 +138,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	public List<SysPermissionDataRuleModel> queryPermissionDataRule(String component, String requestPath, String username) {
 		List<SysPermission> currentSyspermission = null;
 		if(oConvertUtils.isNotEmpty(component)) {
-			//1.通过注解属性pageComponent 获取菜单
+			//1.通过注解属性pageComponent 获取菜单 todo lambda
 			LambdaQueryWrapper<SysPermission> query = new LambdaQueryWrapper<SysPermission>();
 			query.eq(SysPermission::getDelFlag,0);
 			query.eq(SysPermission::getComponent, component);

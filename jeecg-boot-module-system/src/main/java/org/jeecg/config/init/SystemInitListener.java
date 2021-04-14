@@ -14,6 +14,10 @@ import org.springframework.stereotype.Component;
 /**
  * @desc: 启动程序，初始化路由配置
  * @author: flyme
+ *
+ * todo 4.14
+ * 这里的有条件注入
+ * 然后使用的是监听者模式，在项目启动的时候就会开始执行
  */
 @Slf4j
 @Component

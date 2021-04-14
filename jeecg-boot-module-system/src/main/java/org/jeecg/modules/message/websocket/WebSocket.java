@@ -31,6 +31,8 @@ import lombok.extern.slf4j.Slf4j;
  * 总体来说的还是不难
  * ServerEndpoint这是一个特殊的注解，javax提供的目的就是为了websocket使用的
  * 这个websocket可以看作为一个工具类
+ *
+ * 收藏
  */
 @Component
 @Slf4j

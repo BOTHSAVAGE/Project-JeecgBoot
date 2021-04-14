@@ -26,12 +26,18 @@ import java.util.Map;
  * @Author: jeecg-boot
  * @Date: 2020-05-26
  * @Version: V1.0
+ *
+ * todo 4.14
+ * 接口实现，service自动注入
+ * mp+开发规范
+ * 先继承传入mapper和实体类
+ * 在实现
  */
 @Service
 @Slf4j
 public class SysGatewayRouteServiceImpl extends ServiceImpl<SysGatewayRouteMapper, SysGatewayRoute> implements ISysGatewayRouteService {
 
-    @Autowired
+    //springframework.data.redis下面的zzui    @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
 

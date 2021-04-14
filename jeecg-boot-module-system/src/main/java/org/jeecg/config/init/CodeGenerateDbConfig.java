@@ -13,6 +13,9 @@ import org.springframework.context.annotation.Configuration;
  *  但是使用GUI模式代码生成，还是走jeecg_database.properties配置】
  * @author: scott
  * @date: 2021年02月18日 16:30
+ *
+ * todo 4.14
+ * 配置内把bean自动注入
  */
 @Slf4j
 @Configuration
