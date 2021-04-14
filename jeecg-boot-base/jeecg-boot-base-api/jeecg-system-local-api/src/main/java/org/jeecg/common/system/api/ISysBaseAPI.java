@@ -18,6 +18,9 @@ import java.util.Set;
  * @Author  scott
  * @Date 2019-4-20
  * @Version V1.0
+ *
+ * todo 4.14
+ * 继承通用api，然后再重写
  */
 public interface ISysBaseAPI extends CommonAPI {
 

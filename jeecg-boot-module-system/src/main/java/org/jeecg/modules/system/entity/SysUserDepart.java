@@ -7,6 +7,14 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import lombok.Data;
+
+/**
+ * todo 4.14
+ * mp+规范
+ * 指定数据库表
+ * 只当主键
+ * 主键类型为ASSIGN_ID
+ */
 @Data
 @TableName("sys_user_depart")
 public class SysUserDepart implements Serializable {

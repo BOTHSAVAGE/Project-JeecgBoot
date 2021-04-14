@@ -11,6 +11,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @Author: jeecg-boot
  * @Date:   2020-02-13
  * @Version: V1.0
+ *
+ * todo 4.14
+ * MP+ mapper开发规范
  */
 public interface SysDepartRoleUserMapper extends BaseMapper<SysDepartRoleUser> {
 

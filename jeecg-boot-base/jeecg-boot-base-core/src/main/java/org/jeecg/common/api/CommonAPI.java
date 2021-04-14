@@ -5,6 +5,10 @@ import org.jeecg.common.system.vo.*;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * todo 4.14
+ * 通用api，13个整合在一起的
+ */
 public interface CommonAPI {
 
     /**

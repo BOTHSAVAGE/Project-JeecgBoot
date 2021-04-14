@@ -17,6 +17,12 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  *
  * @Author scott
  * @since 2018-12-21
+ *
+ * todo 4.14
+ * 菜单权
+ * 依然是继承通用mapper
+ * 采用xml和注解同时进行
+ *
  */
 public interface SysPermissionMapper extends BaseMapper<SysPermission> {
 	/**

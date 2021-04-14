@@ -49,19 +49,19 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	@Autowired
 	private SysUserMapper userMapper;//todo 4.14
 	@Autowired
-	private SysPermissionMapper sysPermissionMapper;//todo 表单权限
+	private SysPermissionMapper sysPermissionMapper;//todo 表单权限 -> 4.14
 	@Autowired
-	private SysUserRoleMapper sysUserRoleMapper;
+	private SysUserRoleMapper sysUserRoleMapper;//todo 4.14
 	@Autowired
-	private SysUserDepartMapper sysUserDepartMapper;
+	private SysUserDepartMapper sysUserDepartMapper;//todo 4.14
 	@Autowired
-	private ISysBaseAPI sysBaseAPI;
+	private ISysBaseAPI sysBaseAPI;//todo 底层通用 -> 4.14
 	@Autowired
-	private SysDepartMapper sysDepartMapper;
+	private SysDepartMapper sysDepartMapper;//todo 部门 -> 4.14
 	@Autowired
-	private SysRoleMapper sysRoleMapper;
+	private SysRoleMapper sysRoleMapper;//todo 角色 -> 4.14
 	@Autowired
-	private SysDepartRoleUserMapper departRoleUserMapper;
+	private SysDepartRoleUserMapper departRoleUserMapper;//todo 部门角色人员 -> 4.14
 	@Autowired
 	private SysDepartRoleMapper sysDepartRoleMapper;
 	@Resource
