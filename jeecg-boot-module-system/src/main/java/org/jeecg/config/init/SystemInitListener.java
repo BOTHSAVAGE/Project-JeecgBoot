@@ -26,7 +26,7 @@ public class SystemInitListener implements ApplicationListener<ApplicationReadyE
 
 
     @Autowired
-    private ISysGatewayRouteService sysGatewayRouteService;
+    private ISysGatewayRouteService sysGatewayRouteService;//todo 4.14
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
@@ -38,6 +38,7 @@ public class SystemInitListener implements ApplicationListener<ApplicationReadyE
 
     }
 
+    //todo 4.14 这里就是listener加载的优先级
     @Override
     public int getOrder() {
         return 1;

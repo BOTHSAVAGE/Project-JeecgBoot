@@ -37,14 +37,14 @@ import java.util.Map;
 @Slf4j
 public class SysGatewayRouteServiceImpl extends ServiceImpl<SysGatewayRouteMapper, SysGatewayRoute> implements ISysGatewayRouteService {
 
-    //springframework.data.redis下面的zzui    @Autowired
+    //todo springframework.data.redis下面的标准redis使用
     private RedisTemplate<String, Object> redisTemplate;
 
 
     @Override
     public void addRoute2Redis(String key) {
         List<SysGatewayRoute> ls = this.list(new LambdaQueryWrapper<SysGatewayRoute>().eq(SysGatewayRoute::getStatus, 1));
-        redisTemplate.opsForValue().set(key, JSON.toJSONString(ls));
+        redisTemplate.opsForValue().set(key, JSON.toJSONString(ls));//todo 大致看了这里的key，是泛型 对应redis的五种数据结构，可以很好的带入
     }
 
     @Override
