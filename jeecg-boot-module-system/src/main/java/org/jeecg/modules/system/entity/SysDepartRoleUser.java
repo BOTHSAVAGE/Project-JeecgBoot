@@ -21,7 +21,13 @@ import org.jeecgframework.poi.excel.annotation.Excel;
  * @Date:   2020-02-13
  * @Version: V1.0
  *
- * todo
+ * todo 4.14
+ * mp+开发规范
+ * 指定hash等，还有级联
+ * 指定数据库
+ * 指定swagger相关配置
+ * apimodel和apimodel
+ * 使用swagger的目的表示该类会暴露到外部
  */
 @Data
 @TableName("sys_depart_role_user")

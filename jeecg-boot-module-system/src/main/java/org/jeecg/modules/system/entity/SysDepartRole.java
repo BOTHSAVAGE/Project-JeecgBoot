@@ -21,7 +21,18 @@ import org.jeecgframework.poi.excel.annotation.Excel;
  * @Author: jeecg-boot
  * @Date:   2020-02-12
  * @Version: V1.0
- */
+ *
+ * todo 4.14
+ * 实体类一共5个作用
+ * 内部传输
+ * 给前端
+ * 从数据库走
+ * 从数据库来
+ * 从前端来
+ * 也就是外面一共有四个通道，内部只有一个通道
+ * swagger和mp+都有，说明这个实体类有多个作用
+ * excel的目的也是给前端
+ * */
 @Data
 @TableName("sys_depart_role")
 @EqualsAndHashCode(callSuper = false)

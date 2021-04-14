@@ -63,9 +63,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	@Autowired
 	private SysDepartRoleUserMapper departRoleUserMapper;//todo 部门角色人员 -> 4.14
 	@Autowired
-	private SysDepartRoleMapper sysDepartRoleMapper;
+	private SysDepartRoleMapper sysDepartRoleMapper;//todo 部门角色 -> 4.14
 	@Resource
-	private BaseCommonService baseCommonService;
+	private BaseCommonService baseCommonService;//todo 通用服务 -> 4.14
 
     @Override
     @CacheEvict(value = {CacheConstant.SYS_USERS_CACHE}, allEntries = true)

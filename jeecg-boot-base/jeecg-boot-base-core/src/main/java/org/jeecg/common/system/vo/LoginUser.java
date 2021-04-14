@@ -17,6 +17,11 @@ import lombok.experimental.Accessors;
  *
  * @Author scott
  * @since 2018-12-20
+ *
+ * todo 4.14
+ * 方法的入参
+ * 在线用户用于统计和日志相关
+ * 涉及时间就来回转就完事了
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
