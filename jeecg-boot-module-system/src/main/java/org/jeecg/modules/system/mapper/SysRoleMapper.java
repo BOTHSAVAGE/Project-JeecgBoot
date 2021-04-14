@@ -16,6 +16,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2018-12-19
  *
  * todo 4.14
+ * 角色表
+ * 采用的注解
+ * 依然继承mapper然后传入泛型
+ * 这里的接口只能是继承
  *
  */
 public interface SysRoleMapper extends BaseMapper<SysRole> {

@@ -24,6 +24,9 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @Author scott
  * @since 2018-12-20
+ *
+ * todo 4.14
+ * MP+规范
  */
 public interface ISysUserService extends IService<SysUser> {
 

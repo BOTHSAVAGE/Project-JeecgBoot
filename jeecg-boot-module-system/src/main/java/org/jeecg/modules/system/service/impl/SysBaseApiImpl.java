@@ -94,14 +94,14 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	@Resource
 	private SysRoleMapper roleMapper;//todo 角色 -> 4.13
 	@Resource
-	private SysDepartMapper departMapper;
+	private SysDepartMapper departMapper;//todo 部门 -> 4.14
 	@Resource
-	private SysCategoryMapper categoryMapper;
+	private SysCategoryMapper categoryMapper;//todo 分类字典 -> 4.14
 
 	@Autowired
-	private ISysDataSourceService dataSourceService;
+	private ISysDataSourceService dataSourceService;//todo 多数据源管理 -> 4.14 （空）
 	@Autowired
-	private ISysUserDepartService sysUserDepartService;
+	private ISysUserDepartService sysUserDepartService;//todo 用户组织机构 -> 4.14
 	@Resource
 	private SysPermissionMapper sysPermissionMapper;
 	@Autowired

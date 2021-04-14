@@ -15,6 +15,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @Author: jeecg-boot
  * @Date:   2019-05-29
  * @Version: V1.0
+ *
+ * todo 4.14
+ * 使用xml和注解同时开发
+ * 这里要注意同时开发的时候配置文件和mybatis的xml文件的编写
  */
 public interface SysCategoryMapper extends BaseMapper<SysCategory> {
 	

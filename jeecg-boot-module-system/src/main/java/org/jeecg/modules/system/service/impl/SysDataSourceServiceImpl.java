@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
  * @Author: jeecg-boot
  * @Date: 2019-12-25
  * @Version: V1.0
+ *
+ * todo 4.14
+ * 接口的实现继承通用实现，再实现
  */
 @Service
 public class SysDataSourceServiceImpl extends ServiceImpl<SysDataSourceMapper, SysDataSource> implements ISysDataSourceService {

@@ -16,6 +16,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  * @Author ZhiLin
  *
+ * todo 4.14
+ * 继承通用实现
+ *
  */
 public interface ISysUserDepartService extends IService<SysUserDepart> {
 	

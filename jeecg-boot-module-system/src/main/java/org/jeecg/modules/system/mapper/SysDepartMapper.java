@@ -16,6 +16,11 @@ import java.util.List;
  * 
  * @Author: Steve
  * @Since：   2019-01-22
+ *
+ * todo 4.14
+ * 使用MP+的开发规范
+ * 依然使用的是通用的mapper
+ * xml和注解的同时使用
  */
 public interface SysDepartMapper extends BaseMapper<SysDepart> {
 	

@@ -22,6 +22,18 @@ import lombok.experimental.Accessors;
  *
  * @Author scott
  * @since 2018-12-19
+ *
+ * todo 4.14
+ *
+ * 重写了的hashcode和equals方法
+ * 目的是什么
+ * 这个实体类的作用和使用场景
+ * 根据注解判断应该是在返回对象和dto同时存在
+ * 命名规范在哪里
+ * 还有我们经常使用的时间来回转换在前端和数据库的来回转换
+ * 这里的sysrole是否是其他类的父类等
+ * 注解的影响对子类
+ * serializable的影响对子类
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

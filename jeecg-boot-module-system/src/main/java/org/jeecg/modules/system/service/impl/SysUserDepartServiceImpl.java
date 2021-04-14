@@ -27,13 +27,18 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
  * <p/>
  * @Author ZhiLin
  *@since 2019-02-22
+ *
+ * todo 4.14
+ * 继承通过实现再实现
+ *
  */
 @Service
 public class SysUserDepartServiceImpl extends ServiceImpl<SysUserDepartMapper, SysUserDepart> implements ISysUserDepartService {
+	//自动注入
 	@Autowired
-	private ISysDepartService sysDepartService;
+	private ISysDepartService sysDepartService;//todo 4.14
 	@Autowired
-	private ISysUserService sysUserService;
+	private ISysUserService sysUserService;// todo 4.14
 	
 
 	/**

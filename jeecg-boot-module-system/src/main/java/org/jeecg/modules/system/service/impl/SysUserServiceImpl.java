@@ -37,15 +37,19 @@ import java.util.stream.Collectors;
  *
  * @Author: scott
  * @Date: 2018-12-20
+ *
+ * todo 4.14
+ * MP+规范
+ * 先继承通用实现类，传入mapper和实体类泛型 再实现
  */
 @Service
 @Slf4j
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements ISysUserService {
 	
 	@Autowired
-	private SysUserMapper userMapper;
+	private SysUserMapper userMapper;//todo 4.14
 	@Autowired
-	private SysPermissionMapper sysPermissionMapper;
+	private SysPermissionMapper sysPermissionMapper;//todo 表单权限
 	@Autowired
 	private SysUserRoleMapper sysUserRoleMapper;
 	@Autowired

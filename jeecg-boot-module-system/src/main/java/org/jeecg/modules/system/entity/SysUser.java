@@ -26,6 +26,13 @@ import lombok.experimental.Accessors;
  *
  * @Author scott
  * @since 2018-12-20
+ *
+ * todo 4.14
+ * 有些实体类写了部分的注解
+ * 目的？
+ * JsonProperty 转变序列化的名称
+ * TableLogic 表示的是逻辑删除
+ * dict 自定义注解类 等下回去研究
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
