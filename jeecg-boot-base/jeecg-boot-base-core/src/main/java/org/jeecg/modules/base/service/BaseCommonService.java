@@ -5,6 +5,9 @@ import org.jeecg.common.system.vo.LoginUser;
 
 /**
  * common接口
+ *
+ * todo 4.14
+ * 通过接口
  */
 public interface BaseCommonService {
 
