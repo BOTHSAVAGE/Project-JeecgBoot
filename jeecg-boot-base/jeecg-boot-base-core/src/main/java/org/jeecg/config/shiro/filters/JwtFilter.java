@@ -18,6 +18,11 @@ import javax.servlet.http.HttpServletResponse;
  * @Description: 鉴权登录拦截器
  * @Author: Scott
  * @Date: 2018/10/7
+ *
+ * todo 4.15
+ *
+ * 拦截器为鉴权
+ *
  **/
 @Slf4j
 public class JwtFilter extends BasicHttpAuthenticationFilter {
@@ -74,7 +79,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        if(allowOrigin){
+        if(allowOrigin){//如果允许跨域那么就执行下面语句
             httpServletResponse.setHeader("Access-control-Allow-Origin", httpServletRequest.getHeader("Origin"));
             httpServletResponse.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS,PUT,DELETE");
             httpServletResponse.setHeader("Access-Control-Allow-Headers", httpServletRequest.getHeader("Access-Control-Request-Headers"));

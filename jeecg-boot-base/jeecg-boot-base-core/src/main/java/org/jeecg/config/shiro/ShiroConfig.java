@@ -36,6 +36,10 @@ import java.util.*;
  * @author: Scott
  * @date: 2018/2/7
  * @description: shiro 配置类
+ *
+ * todo 4.15
+ * shiro 核心配置类
+ *
  */
 
 @Slf4j
