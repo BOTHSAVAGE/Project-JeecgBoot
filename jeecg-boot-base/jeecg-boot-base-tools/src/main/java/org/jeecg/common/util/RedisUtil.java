@@ -15,10 +15,20 @@ import org.springframework.util.CollectionUtils;
  * redis 工具类
  * @Author Scott
  *
+ *
+ * todo 4.15
+ * 收藏
+ * redis工具类
+ *
+ * hash set list string 还有 有序set没看到
  */
 @Component
 public class RedisUtil {
 
+	/**
+	 * StringRedisTemplate:redis数据库里面本来存的是字符串数据或者你要存取的数据就是字符串类型数据
+	 * RedisTemplate:直接从Redis里面取出一个对象
+	 */
 	@Autowired
 	private RedisTemplate<String, Object> redisTemplate;
 	@Autowired
@@ -34,7 +44,7 @@ public class RedisUtil {
 	public boolean expire(String key, long time) {
 		try {
 			if (time > 0) {
-				redisTemplate.expire(key, time, TimeUnit.SECONDS);
+				redisTemplate.expire(key, time, TimeUnit.SECONDS);//todo 4.15 设置过期时间
 			}
 			return true;
 		} catch (Exception e) {

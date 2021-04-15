@@ -14,6 +14,13 @@ import javax.servlet.http.HttpServletRequest;
  * @Author scott
  * @Date 2019/9/23 14:12
  * @Description: 编程校验token有效性
+ *
+ *
+ * todo 4.15
+ * token验证工具类
+ * 收藏
+ *
+ *
  */
 @Slf4j
 public class TokenUtils {
@@ -25,6 +32,7 @@ public class TokenUtils {
      * @return
      */
     public static String getTokenByRequest(HttpServletRequest request) {
+        //todo 4.15 token是放在header中的
         String token = request.getParameter("token");
         if (token == null) {
             token = request.getHeader("X-Access-Token");
@@ -34,6 +42,8 @@ public class TokenUtils {
 
     /**
      * 验证Token
+     * todo 4.15
+     * 验证token为什么不需要签名
      */
     public static boolean verifyToken(HttpServletRequest request, CommonAPI commonAPI, RedisUtil redisUtil) {
         log.debug(" -- url --" + request.getRequestURL());
@@ -44,18 +54,18 @@ public class TokenUtils {
         }
 
         // 解密获得username，用于和数据库进行对比
-        String username = JwtUtil.getUsername(token);
+        String username = JwtUtil.getUsername(token);// 解密获取用户信息操作
         if (username == null) {
             throw new AuthenticationException("Token非法无效!");
         }
 
         // 查询用户信息
-        LoginUser user = commonAPI.getUserByName(username);
+        LoginUser user = commonAPI.getUserByName(username);//存储数据比对操作1
         if (user == null) {
             throw new AuthenticationException("用户不存在!");
         }
         // 判断用户状态
-        if (user.getStatus() != 1) {
+        if (user.getStatus() != 1) {                    //存储数据比对操作2
             throw new AuthenticationException("账号已锁定,请联系管理员!");
         }
         // 校验token是否超时失效 & 或者账号密码是否错误
@@ -72,8 +82,11 @@ public class TokenUtils {
      * @param passWord
      * @param redisUtil
      * @return
+     * todo 4.15
+     * 保证每一次请求都要刷新token
      */
     private static boolean jwtTokenRefresh(String token, String userName, String passWord, RedisUtil redisUtil) {
+        //每一个的token都存放在redis中
         String cacheToken = String.valueOf(redisUtil.get(CommonConstant.PREFIX_USER_TOKEN + token));
         if (oConvertUtils.isNotEmpty(cacheToken)) {
             // 校验token有效性
@@ -97,6 +110,11 @@ public class TokenUtils {
 
     /**
      * 验证Token
+     * todo 4.15
+     * 入参为token（请求传过来的）
+     * commonAPI（用于验证交互的）
+     * redisUtis （用于获取缓存中的数据）
+     *
      */
     public static boolean verifyToken(String token, CommonAPI commonAPI, RedisUtil redisUtil) {
         if (StringUtils.isBlank(token)) {

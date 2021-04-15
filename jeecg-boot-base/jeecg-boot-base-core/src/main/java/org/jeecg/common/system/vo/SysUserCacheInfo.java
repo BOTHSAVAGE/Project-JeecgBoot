@@ -4,6 +4,13 @@ import java.util.List;
 
 import org.jeecg.common.util.DateUtils;
 
+/**
+ * todo 4.15
+ * 包是vo对象
+ * 属性名看不出来
+ * 数据实体类一共有5条通道
+ *
+ */
 public class SysUserCacheInfo {
 	
 	private String sysUserCode;

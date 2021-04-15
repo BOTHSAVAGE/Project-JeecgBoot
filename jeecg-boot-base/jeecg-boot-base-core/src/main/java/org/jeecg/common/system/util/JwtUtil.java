@@ -24,10 +24,14 @@ import java.util.Date;
  * @Author Scott
  * @Date 2018-07-12 14:23
  * @Desc JWT工具类
+ *
+ * todo 4.15
+ * 收藏
+ * JWT工具类，用于加密解密生成token等
  **/
 public class JwtUtil {
 
-	// Token过期时间30分钟（用户登录过期时间是此时间的两倍，以token在reids缓存时间为准）
+	// Token过期时间30分钟（用户登录过期时间是此时间的两倍，以token在reids缓存时间为准） todo 4.15 知道token会过期
 	public static final long EXPIRE_TIME = 30 * 60 * 1000;
 
 	/**
@@ -40,10 +44,10 @@ public class JwtUtil {
 	public static boolean verify(String token, String username, String secret) {
 		try {
 			// 根据密码生成JWT效验器
-			Algorithm algorithm = Algorithm.HMAC256(secret);
-			JWTVerifier verifier = JWT.require(algorithm).withClaim("username", username).build();
+			Algorithm algorithm = Algorithm.HMAC256(secret);//生成算法
+			JWTVerifier verifier = JWT.require(algorithm).withClaim("username", username).build();//验证器生成
 			// 效验TOKEN
-			DecodedJWT jwt = verifier.verify(token);
+			DecodedJWT jwt = verifier.verify(token);//验证
 			return true;
 		} catch (Exception exception) {
 			return false;
@@ -54,11 +58,14 @@ public class JwtUtil {
 	 * 获得token中的信息无需secret解密也能获得
 	 *
 	 * @return token中包含的用户名
+	 *
+	 * todo 4.15 获取token中的信息
+	 * 在pom中引入了java-jwt包集成来的
 	 */
 	public static String getUsername(String token) {
 		try {
-			DecodedJWT jwt = JWT.decode(token);
-			return jwt.getClaim("username").asString();
+			DecodedJWT jwt = JWT.decode(token);//解析反序列化为对象？
+			return jwt.getClaim("username").asString();//得到里面的字段
 		} catch (JWTDecodeException e) {
 			return null;
 		}

@@ -206,6 +206,12 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 		return null;
 	}
 
+	/**
+	 * todo 4.15
+	 * 全程没有看到redis的嘛
+	 * @param username
+	 * @return
+	 */
 	@Override
 	public SysUserCacheInfo getCacheUser(String username) {
 		SysUserCacheInfo info = new SysUserCacheInfo();

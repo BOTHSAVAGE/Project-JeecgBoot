@@ -10,11 +10,15 @@ import org.springframework.context.annotation.Configuration;
  * @Description: TomcatFactoryConfig
  * @author: scott
  * @date: 2021年01月25日 11:40
+ *
+ * todo 4.15
+ * tomcat 的配置类
  */
 @Configuration
 public class TomcatFactoryConfig {
     /**
      * tomcat-embed-jasper引用后提示jar找不到的问题
+     * 注入tomcat的servlet工厂
      */
     @Bean
     public TomcatServletWebServerFactory tomcatFactory() {

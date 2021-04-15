@@ -17,6 +17,7 @@ import java.util.Set;
 /**
  * 服务化 system模块 对外接口请求类
  *
+ * todo 4.15
  * controller的入参都是DTO,就是数据传输对象
  * 可能是接口的原因，可能其他的controller放进来任然是vo
  * 这里所有的入参都是使用@requestBody修饰的，应该多少有一点讲究
@@ -30,10 +31,10 @@ import java.util.Set;
 public class SystemAPIController {
 
     @Autowired
-    private ISysBaseAPI sysBaseAPI;
+    private ISysBaseAPI sysBaseAPI;//todo 4.15 系统通用api
 
     @Autowired
-    private ISysUserService sysUserService;
+    private ISysUserService sysUserService;//todo 4.15 用户服务
 
 
     /**

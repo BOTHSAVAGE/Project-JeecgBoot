@@ -16,6 +16,8 @@ import org.springframework.context.annotation.Configuration;
  *
  * todo 4.14
  * 配置内把bean自动注入
+ *
+ * 这里是代码生成框架 现在不掌握
  */
 @Slf4j
 @Configuration
