@@ -1,13 +1,12 @@
 package org.jeecg.modules.system.service;
 
-import java.util.List;
-import java.util.Map;
-
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.jeecg.common.exception.JeecgBootException;
 import org.jeecg.modules.system.entity.SysCategory;
 import org.jeecg.modules.system.model.TreeSelectModel;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description: 分类字典

@@ -7,6 +7,9 @@ import java.util.Map;
 
 /**
  * 带业务参数的模板消息
+ *
+ * todo 4.15
+ * 同样可序列话，前端传输对象
  */
 @Data
 public class BusTemplateMessageDTO extends TemplateMessageDTO implements Serializable {

@@ -6,6 +6,10 @@ import java.io.Serializable;
 
 /**
  * 带业务参数的消息
+ * todo 4.15
+ * 同样是DTO，作为controller方法的入参
+ * 标注可序列化
+ * 同样在service解析转化为其他的实体类
  */
 @Data
 public class BusMessageDTO extends MessageDTO implements Serializable {

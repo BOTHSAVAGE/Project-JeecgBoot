@@ -1,6 +1,5 @@
 package org.jeecg.config.jimureport;
 
-import org.jeecg.common.constant.DataBaseConstant;
 import org.jeecg.common.system.api.ISysBaseAPI;
 import org.jeecg.common.system.util.JwtUtil;
 import org.jeecg.common.system.vo.SysUserCacheInfo;

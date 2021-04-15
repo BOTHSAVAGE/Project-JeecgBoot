@@ -7,6 +7,15 @@ import java.io.Serializable;
 
 /**
  * 普通消息
+ * todo 4.14
+ * 该实体类是放在dto中的，实体类命名也是DTO
+ * 作为controller方法的入参
+ * service层的入参
+ * 在service层被处理结构为其他实体类SysAnnouncement
+ * SysAnnouncement的MP+规范下的实体类
+ * 直接参与sql
+ * 里面加了@excle和时间转化类注解，可能会传给用户端
+ *
  */
 @Data
 public class MessageDTO implements Serializable {

@@ -12,14 +12,11 @@ import org.jeecg.common.constant.GlobalConstants;
 import org.jeecg.modules.system.entity.SysGatewayRoute;
 import org.jeecg.modules.system.mapper.SysGatewayRouteMapper;
 import org.jeecg.modules.system.service.ISysGatewayRouteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Description: gateway路由管理

@@ -1,8 +1,11 @@
 package org.jeecg.modules.message.websocket;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
+import org.jeecg.common.base.BaseMap;
+import org.jeecg.common.constant.WebsocketConst;
+import org.jeecg.common.modules.redis.client.JeecgRedisClient;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.websocket.OnClose;
@@ -11,15 +14,9 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
-
-import org.jeecg.common.base.BaseMap;
-import org.jeecg.common.constant.WebsocketConst;
-import org.jeecg.common.modules.redis.client.JeecgRedisClient;
-import org.springframework.stereotype.Component;
-
-import com.alibaba.fastjson.JSONObject;
-
-import lombok.extern.slf4j.Slf4j;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * @Author scott

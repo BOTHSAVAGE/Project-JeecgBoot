@@ -7,6 +7,9 @@ import java.util.Map;
 
 /**
  * 消息模板dto
+ *
+ * todo 4.15
+ * 可序列化 IO传输对象
  */
 @Data
 public class TemplateDTO implements Serializable {
