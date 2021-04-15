@@ -13,6 +13,12 @@ import lombok.Data;
  * @author scott
  * @email jeecgos@163.com
  * @date  2019年1月19日
+ *
+ * todo 4.15
+ * 传给用户的接口返回对象
+ * 在swagger中有标注
+ * 指明可以进行序列化，指定SerialVersinuID版本号，若 序列化和反序列化的版本好不一样，throw InvalidCastException
+ * 标准的返回的通用对象
  */
 @Data
 @ApiModel(value="接口返回对象", description="接口返回对象")

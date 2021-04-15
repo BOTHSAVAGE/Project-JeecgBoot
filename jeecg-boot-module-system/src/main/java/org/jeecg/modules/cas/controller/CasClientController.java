@@ -32,6 +32,11 @@ import java.util.List;
  *
  * @Author zhoujf
  * @since 2018-12-20
+ *
+ * todo  4.15
+ * 收藏 单点登录的实现
+ * 单点登录
+ * 单点登录意味着有一个公用的认证模块
  */
 @Slf4j
 @RestController
@@ -39,32 +44,36 @@ import java.util.List;
 public class CasClientController {
 
 	@Autowired
-	private ISysUserService sysUserService;
+	private ISysUserService sysUserService;//todo 4.15
 	@Autowired
-    private ISysDepartService sysDepartService;
+    private ISysDepartService sysDepartService;//todo 4.15
 	@Autowired
-    private RedisUtil redisUtil;
+    private RedisUtil redisUtil;//todo 4.15
 	
 	@Value("${cas.prefixUrl}")
     private String prefixUrl;
-	
-	
+
+	/**
+	 * 相当于接口的登录
+	 * @param ticket 凭证
+	 * @param service 服务
+	 * @return
+	 * @throws Exception
+	 */
 	@GetMapping("/validateLogin")
 	public Object validateLogin(@RequestParam(name="ticket") String ticket,
-								@RequestParam(name="service") String service,
-								HttpServletRequest request,
-								HttpServletResponse response) throws Exception {
+								@RequestParam(name="service") String service) throws Exception {
 		Result<JSONObject> result = new Result<JSONObject>();
-		log.info("Rest api login.");
+		log.info("Rest api login.");//todo 登录前打一个日志
 		try {
-			String validateUrl = prefixUrl+"/p3/serviceValidate";
+			String validateUrl = prefixUrl+"/p3/serviceValidate";//todo 这里应该是验证中心的URL
 			String res = CASServiceUtil.getSTValidate(validateUrl, ticket, service);
 			log.info("res."+res);
 			final String error = XmlUtils.getTextForElement(res, "authenticationFailure");
 			if(StringUtils.isNotEmpty(error)) {
 				throw new Exception(error);
 			}
-			final String principal = XmlUtils.getTextForElement(res, "user");
+			final String principal = XmlUtils.getTextForElement(res, "user");//解析xml获取i西南西
 			if (StringUtils.isEmpty(principal)) {
 	            throw new Exception("No principal was found in the response from the CAS server.");
 	        }

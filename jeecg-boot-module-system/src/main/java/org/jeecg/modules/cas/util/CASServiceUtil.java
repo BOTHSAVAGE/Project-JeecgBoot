@@ -15,6 +15,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.cert.X509Certificate;
 
+/**
+ *  todo 4.15
+ *  一个方法一份方法的注释
+ *
+ */
 public class CASServiceUtil {
 	
 	public static void main(String[] args) {
@@ -26,9 +31,15 @@ public class CASServiceUtil {
 		System.out.println("---------res-----"+res);
 	}
 	
-	
-	/**
+
+    /**
      * 验证ST
+     * todo 4.15
+     * 传入
+     * @param url
+     * @param st
+     * @param service
+     * @return
      */
     public static String getSTValidate(String url,String st, String service){
 		try {
