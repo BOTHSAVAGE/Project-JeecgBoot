@@ -30,6 +30,10 @@ import java.util.List;
  * @Author: dangzhenghui
  * @Date: 2019-3-17 21:50
  * @Version: 1.0
+ *
+ * todo 4.15 没看
+ * 收藏
+ * 字典类AOP的目的没有搞清楚
  */
 @Aspect
 @Component
@@ -46,14 +50,25 @@ public class DictAspect {
 
     @Around("excudeService()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
-    	long time1=System.currentTimeMillis();	
+        //1.1获取执行开始时间戳
+    	long time1=System.currentTimeMillis();
+    	//1.2执行切点，得到结果
         Object result = pjp.proceed();
+        //1.3获取执行完成时间戳
         long time2=System.currentTimeMillis();
+        //1.4打印日志
         log.debug("获取JSON数据 耗时："+(time2-time1)+"ms");
+
+        //2.1获取执行开始时间戳
         long start=System.currentTimeMillis();
+        //2.2执行方法，把结果转化一下
         this.parseDictText(result);
+        //2.3获取执行结束时间戳
         long end=System.currentTimeMillis();
+        //2.4打印日志
         log.debug("解析注入JSON数据  耗时"+(end-start)+"ms");
+
+        //3.返回结果
         return result;
     }
 

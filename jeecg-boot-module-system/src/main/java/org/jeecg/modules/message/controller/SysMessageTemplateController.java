@@ -26,6 +26,9 @@ import java.util.Map;
  * @Author: jeecg-boot
  * @Sate: 2019-04-09
  * @Version: V1.0
+ *
+ * todo 4.15
+ * 依然是继承的JeecgController，传入T
  */
 @Slf4j
 @RestController

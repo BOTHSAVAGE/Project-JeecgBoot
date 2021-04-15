@@ -20,6 +20,10 @@ import java.util.Map;
 
 /**
  * 消息生成工具
+ *
+ * todo 4.15
+ * 消息生成工具
+ * 收藏
  */
 
 @Component

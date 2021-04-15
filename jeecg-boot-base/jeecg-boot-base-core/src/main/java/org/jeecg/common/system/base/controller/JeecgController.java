@@ -34,9 +34,20 @@ import java.util.stream.Collectors;
  * @Author: dangzhenghui@163.com
  * @Date: 2019-4-21 8:13
  * @Version: 1.0
+ *
+ * todo 4.15
+ * 收藏 优雅
+ * controller基类
+ * 使用了泛型
+ *  T表示的是实体类
+ *  S表示的是Service
+ *  其中S必须继承mp+的通用service
+ *
  */
 @Slf4j
 public class JeecgController<T, S extends IService<T>> {
+
+    //todo 这里的S 是在父类中用的，不是在子类
     @Autowired
     S service;
 

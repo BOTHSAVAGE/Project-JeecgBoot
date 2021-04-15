@@ -22,11 +22,17 @@ import java.util.Arrays;
  * @author: jeecg-boot
  * @date: 2019-04-09
  * @version: V1.0
+ *
+ * todo 4.15
+ * 标准的restcontroller写法
+ * 这里定义了controller的基类
  */
 @Slf4j
 @RestController
 @RequestMapping("/sys/message/sysMessage")
 public class SysMessageController extends JeecgController<SysMessage, ISysMessageService> {
+
+	//这里
 	@Autowired
 	private ISysMessageService sysMessageService;
 
@@ -40,12 +46,22 @@ public class SysMessageController extends JeecgController<SysMessage, ISysMessag
 	 * @return
 	 */
 	@GetMapping(value = "/list")
-	public Result<?> queryPageList(SysMessage sysMessage, @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
-			@RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize, HttpServletRequest req) {
+	public Result<?> queryPageList(SysMessage sysMessage,
+								   @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+			                       @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
+								   HttpServletRequest req) {
+
+		//todo 4.15  条件分页查询
+
+		//构造queryWrapper
 		QueryWrapper<SysMessage> queryWrapper = QueryGenerator.initQueryWrapper(sysMessage, req.getParameterMap());
+		//构造page对象，该对象是mybatis+提供的
 		Page<SysMessage> page = new Page<SysMessage>(pageNo, pageSize);
+		//返回接口
 		IPage<SysMessage> pageList = sysMessageService.page(page, queryWrapper);
+		//通用返回
         return Result.ok(pageList);
+
 	}
 
 	/**
@@ -117,6 +133,7 @@ public class SysMessageController extends JeecgController<SysMessage, ISysMessag
 	 */
 	@GetMapping(value = "/exportXls")
 	public ModelAndView exportXls(HttpServletRequest request, SysMessage sysMessage) {
+		//调用父类方法
 		return super.exportXls(request,sysMessage,SysMessage.class, "推送消息模板");
 	}
 
@@ -129,6 +146,7 @@ public class SysMessageController extends JeecgController<SysMessage, ISysMessag
 	 */
 	@PostMapping(value = "/importExcel")
 	public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
+		//调用父类方法，继承才能代码复用，接口可以看作为强规范
 		return super.importExcel(request, response, SysMessage.class);
 	}
 
