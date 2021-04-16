@@ -14,17 +14,23 @@ import java.util.List;
 
 /**
  * 描述：AutoPoi Excel注解支持字典参数设置
- *  举例： @Excel(name = "性别", width = 15, dicCode = "sex")
+ * 举例：@Excel(name = "性别", width = 15, dicCode = "sex")
  * 1、导出的时候会根据字典配置，把值1,2翻译成：男、女;
  * 2、导入的时候，会把男、女翻译成1,2存进数据库;
  * 
  * @Author:scott 
  * @since：2019-04-09 
  * @Version:1.0
+ *
+ * todo 4.16
+ * 字典参数的相关
  */
 @Slf4j
 @Service
 public class AutoPoiDictConfig implements AutoPoiDictServiceI {
+
+	//要用的时候才注入，主要的作用是减少SpringIoc的加载时间
+	//出现循环依赖的时候也可以用@lazy
 	@Lazy
 	@Resource
 	private CommonAPI commonAPI;

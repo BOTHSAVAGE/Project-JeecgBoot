@@ -31,6 +31,13 @@ import java.util.List;
 
 /**
  * @Author scott
+ *
+ * todo 4.16
+ *
+ * swagger的配置类
+ * 使用的Knife4j主题
+ * Import注解的作用是导入配置类或者需要提前加载的类
+ * 也是继承的WebMvcConfigurer
  */
 @Configuration
 @EnableSwagger2

@@ -4,6 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
+/**
+ * todo 4.16
+ * @ServerEndpoint注解的使用
+ */
 @Configuration
 public class WebSocketConfig {
     /**

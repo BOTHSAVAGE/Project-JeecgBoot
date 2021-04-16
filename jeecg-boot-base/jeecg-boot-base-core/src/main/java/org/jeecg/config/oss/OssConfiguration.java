@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 云存储 配置
+ * todo 4.16
+ * 不重要通用
+ * 收藏
  */
 @Configuration
 public class OssConfiguration {

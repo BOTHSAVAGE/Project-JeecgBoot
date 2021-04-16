@@ -24,6 +24,10 @@ import java.util.List;
  *
  * @Author qinfeng
  *
+ * todo 4.16
+ * webmvc的配置类
+ * 这个configure会常写
+ *
  */
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {

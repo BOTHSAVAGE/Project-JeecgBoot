@@ -22,6 +22,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
+/**
+ * todo 4.16
+ * service的impl
+ */
 @Service
 @Slf4j
 public class BaseCommonServiceImpl implements BaseCommonService {

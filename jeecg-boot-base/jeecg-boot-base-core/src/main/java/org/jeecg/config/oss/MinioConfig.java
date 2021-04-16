@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Minio文件上传配置文件
+ * todo 4.16
+ * 不重要就是通用的
+ * 收藏
  */
 @Slf4j
 @Configuration

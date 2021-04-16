@@ -10,6 +10,9 @@ import org.springframework.web.client.RestTemplate;
 /**
 * 优雅的http请求方式RestTemplate
 * @Return:
+ *
+ * todo 4.16
+ * 不知道目的
 */
 @Configuration
 public class RestTemplateConfig {

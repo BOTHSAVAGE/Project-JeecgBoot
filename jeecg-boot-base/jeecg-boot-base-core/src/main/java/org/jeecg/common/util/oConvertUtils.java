@@ -30,6 +30,7 @@ import java.util.regex.Pattern;
  */
 @Slf4j
 public class oConvertUtils {
+	//判断是否为空
 	public static boolean isEmpty(Object object) {
 		if (object == null) {
 			return (true);
@@ -42,14 +43,14 @@ public class oConvertUtils {
 		}
 		return (false);
 	}
-	
+	//判断是否不为空
 	public static boolean isNotEmpty(Object object) {
 		if (object != null && !object.equals("") && !object.equals("null")) {
 			return (true);
 		}
 		return (false);
 	}
-
+	//解码
 	public static String decode(String strIn, String sourceCode, String targetCode) {
 		String temp = code2code(strIn, sourceCode, targetCode);
 		return temp;

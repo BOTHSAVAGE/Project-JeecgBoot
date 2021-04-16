@@ -4,6 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 多租户 tenant_id存储器
+ * todo 4.16
+ * 这里使用了thradlocal，在每一个线程中都拷贝一份变量的副本
+ * 不清楚
  */
 @Slf4j
 public class TenantContext {

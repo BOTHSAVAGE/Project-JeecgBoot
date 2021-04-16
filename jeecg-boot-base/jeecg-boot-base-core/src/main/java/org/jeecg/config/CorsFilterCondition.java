@@ -7,6 +7,8 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
  * 跨域配置加载条件
+ * todo 4.16
+ * 如果不启动微服务，则配置否则不配置
  */
 public class CorsFilterCondition implements Condition {
 

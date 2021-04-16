@@ -17,6 +17,10 @@ import java.util.Map;
 
 /**
  * 自定义ShiroFilterFactoryBean解决资源中文路径问题
+ * todo 4.16
+ * 中文路径
+ * 收藏
+ * 通用配置选项
  */
 @Slf4j
 public class CustomShiroFilterFactoryBean extends ShiroFilterFactoryBean {

@@ -12,6 +12,9 @@ import lombok.extern.slf4j.Slf4j;
  * @Author Scott
  * @create 2019-02-01 15:56
  * @desc 鉴权请求URL访问权限拦截器
+ *
+ * todo 4.16
+ * 访问权限拦截的filter
  */
 @Slf4j
 public class ResourceCheckFilter extends AccessControlFilter {

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * 设置静态参数初始化
+ * todo 4.16
+ * 全局静态参数可以放再IOC中注入
  */
 @Component
 @Data

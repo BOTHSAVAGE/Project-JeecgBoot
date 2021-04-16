@@ -29,11 +29,22 @@ import java.util.Set;
  * @Author: Scott
  * @Date: 2019-4-23 8:13
  * @Version: 1.1
+ *
+ * todo 4.16
+ * realm表示领域的意思
+ * 再shiro要自定义登录等的逻辑
+ * 就要重写这个realm
+ *
  */
 @Component
 @Slf4j
 public class ShiroRealm extends AuthorizingRealm {
-	@Lazy
+
+    /**
+     * @Lazy
+     */
+
+    @Lazy
     @Resource
     private CommonAPI commonAPI;
 

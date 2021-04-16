@@ -6,6 +6,9 @@ import org.apache.shiro.authc.AuthenticationToken;
  * @Author Scott
  * @create 2018-07-12 15:19
  * @desc
+ *
+ * todo 4.16
+ * 包装了一层token
  **/
 public class JwtToken implements AuthenticationToken {
 	
