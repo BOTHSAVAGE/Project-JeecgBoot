@@ -115,6 +115,9 @@ public class ShiroRealm extends AuthorizingRealm {
      * 校验token的有效性
      *
      * @param token
+     *
+     * todo 4.16
+     * 这个在4.15的时候的有过阅读
      */
     public LoginUser checkUserTokenIsEffect(String token) throws AuthenticationException {
         // 解密获得username，用于和数据库进行对比

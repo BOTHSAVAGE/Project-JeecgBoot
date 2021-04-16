@@ -92,9 +92,12 @@ public class RedisConfig extends CachingConfigurerSupport {
 
 	/**
 	 * 缓存配置管理器
-	 *
 	 * @param factory
 	 * @return
+	 * todo 4.16
+	 * CacheManager的作用就是在使用@cacheable和@cacheevit的时候使用指定缓存比如redis进行操作
+	 *
+	 *
 	 */
 	@Bean
 	public CacheManager cacheManager(LettuceConnectionFactory factory) {
