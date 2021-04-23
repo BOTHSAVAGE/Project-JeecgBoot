@@ -12,8 +12,13 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * 自定义Map
+/**\
+ *
+ * todo 4.23
+ * hashmap允许key和value的值为空
+ * 这里在add和pu方法中添加了的空值转换为空字符串
+ * 并且做了类型转换api的设计
+ *
  */
 public class BaseMap extends HashMap<String, Object> {
 
