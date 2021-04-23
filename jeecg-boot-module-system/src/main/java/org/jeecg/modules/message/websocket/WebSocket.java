@@ -80,16 +80,18 @@ public class WebSocket {
     /**
      * 服务端推送消息
      * todo 4.23 这里被redis消息监听者调用
-     *
      * @param userId
      * @param message
      */
     public void pushMessage(String userId, String message) {
-        //sessionPool的本质就是一个hashmap
+        //sessionPool的本质就是一个hashmap，从pool中获取到的sesission
         Session session = sessionPool.get(userId);
+        //判断session状态
         if (session != null && session.isOpen()) {
             try {
+                //打印日志
                 log.info("【websocket消息】 单点消息:" + message);
+                //websocket发送消息接口
                 session.getAsyncRemote().sendText(message);
             } catch (Exception e) {
                 e.printStackTrace();
