@@ -37,6 +37,16 @@ import static java.util.Collections.singletonMap;
 * 开启缓存支持
 * @author zyf
  * @Return:
+ *
+ *
+ * todo 4.23
+ * 数据存储
+ * 发布订阅
+ * 过期key监听
+ *
+ * http://doc.jeecg.com/2043898#_14
+ *
+ *
 */
 @Slf4j
 @EnableCaching

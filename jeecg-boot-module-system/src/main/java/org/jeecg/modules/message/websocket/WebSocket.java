@@ -85,6 +85,7 @@ public class WebSocket {
      * @param message
      */
     public void pushMessage(String userId, String message) {
+        //sessionPool的本质就是一个hashmap
         Session session = sessionPool.get(userId);
         if (session != null && session.isOpen()) {
             try {
@@ -130,10 +131,13 @@ public class WebSocket {
      * @param message
      */
     public void sendMessage(String message) {
+        //1.打印日志
         log.info("【websocket消息】广播消息:" + message);
+        //2.创建的自定义的map容器，放入部分信息
         BaseMap baseMap = new BaseMap();
         baseMap.put("userId", "");
         baseMap.put("message", message);
+        //3.发布消息到redis的指定通道
         jeecgRedisClient.sendMessage(REDIS_TOPIC_NAME, baseMap);
     }
 

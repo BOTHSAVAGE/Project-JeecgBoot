@@ -29,6 +29,20 @@ public class BaseMap extends HashMap<String, Object> {
     }
 
 
+    /**
+     * todo 4.23
+     * hashmap允许key和value的值为空，线程不安全
+     * hashtable不允许，线程安全
+     *
+     * 这里重写了hashmap的put方法，如果为null就传入的空字符串
+     * add方法也一样
+     *
+     * 然后写了的几个工具方法来做类型的转换
+     *
+     * @param key
+     * @param value
+     * @return
+     */
     @Override
     public BaseMap put(String key, Object value) {
         super.put(key, Optional.ofNullable(value).orElse(""));
