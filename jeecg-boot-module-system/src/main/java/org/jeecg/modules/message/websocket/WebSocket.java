@@ -79,6 +79,7 @@ public class WebSocket {
 
     /**
      * 服务端推送消息
+     * todo 4.23 这里被redis消息监听者调用
      *
      * @param userId
      * @param message
@@ -123,6 +124,8 @@ public class WebSocket {
 
     /**
      * 后台发送消息到redis
+     * todo 4.23 这里  调用了   redis消息发布者
+     * 这里不指定用户是群发消息
      *
      * @param message
      */

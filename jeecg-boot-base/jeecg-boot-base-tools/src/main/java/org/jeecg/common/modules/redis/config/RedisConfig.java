@@ -124,26 +124,51 @@ public class RedisConfig extends CachingConfigurerSupport {
 
 	/**
 	 * redis 监听配置
+	 * todo 4.23
+	 * 这里就是开启redis的消息订阅
+	 * 可以看作的是订阅者模式（观察者模式）的redis实现
+	 *
+	 * 在网上看到一种方案是用的redis的消息订阅模式
+	 * 订单在redis存放30分钟，若30分钟订单失效
+	 * 消息接收者就去判断是否支付，已支付就删除redis中的，然后进行下面的操作
+	 * 如果没有支付就订单失效
 	 *
 	 * @param redisConnectionFactory redis 配置
 	 * @return
 	 */
 	@Bean
 	public RedisMessageListenerContainer redisContainer(RedisConnectionFactory redisConnectionFactory, RedisReceiver redisReceiver, MessageListenerAdapter commonListenerAdapter) {
+		//1.创建一个容器
 		RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+		//2.绑定redis连接工厂
 		container.setConnectionFactory(redisConnectionFactory);
+		//3.在容器中添加通道
 		container.addMessageListener(commonListenerAdapter, new ChannelTopic(GlobalConstants.REDIS_TOPIC_NAME));
+		//4.返回容器
 		return container;
 	}
 
 
+	/**
+	 * 定义消息接收适配器
+	 * @param redisReceiver
+	 * @return
+	 */
 	@Bean
 	MessageListenerAdapter commonListenerAdapter(RedisReceiver redisReceiver) {
+		//1.传入自定义的redis接收器，设置接收处理逻辑为onMessage
 		MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(redisReceiver, "onMessage");
+		//2.设置json序列化
 		messageListenerAdapter.setSerializer(jacksonSerializer());
+		//3.返回消息适配器
 		return messageListenerAdapter;
 	}
 
+	/**
+	 * Jackson2JsonRedisSerializer为的spring data redis 提供的
+	 * 实现了接口RedisSerializer
+	 * @return
+	 */
 	private Jackson2JsonRedisSerializer jacksonSerializer() {
 		Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
 		ObjectMapper objectMapper = new ObjectMapper();
