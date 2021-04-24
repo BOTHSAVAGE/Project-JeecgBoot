@@ -7,6 +7,10 @@ import java.util.Date;
 /**
  * 日志对象
  * cloud api 用到的接口传输对象
+ * todo 4.23
+ * DTO表示data transfer object 数据运输对象
+ * 在这里是直接与数据哭打交道的
+ *
  */
 @Data
 public class LogDTO implements Serializable {

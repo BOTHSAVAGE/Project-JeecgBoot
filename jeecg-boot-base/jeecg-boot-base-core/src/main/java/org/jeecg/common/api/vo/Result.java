@@ -145,6 +145,6 @@ public class Result<T> implements Serializable {
 	}
 
 	@JsonIgnore
-	private String onlTable;
+	private String onlTable;//不给到前端，不序列化
 
 }

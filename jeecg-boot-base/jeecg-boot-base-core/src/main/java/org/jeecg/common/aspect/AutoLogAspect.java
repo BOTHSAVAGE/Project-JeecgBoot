@@ -38,6 +38,9 @@ import java.util.Date;
  * @Author scott
  * @email jeecgos@163.com
  * @Date 2018年1月14日
+ * todo 4.23
+ * 申明一个切面类并且使用注解放入到IOC中
+ *
  */
 @Aspect
 @Component
@@ -46,11 +49,21 @@ public class AutoLogAspect {
     @Resource
     private BaseCommonService baseCommonService;
 
+    /**
+     * 声明在此注解上运行
+     * 申明一个切点
+     */
     @Pointcut("@annotation(org.jeecg.common.aspect.annotation.AutoLog)")
     public void logPointCut() {
 
     }
 
+    /**
+     * aroud切点
+     * @param point
+     * @return
+     * @throws Throwable
+     */
     @Around("logPointCut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
         long beginTime = System.currentTimeMillis();
@@ -59,22 +72,24 @@ public class AutoLogAspect {
         //执行时长(毫秒)
         long time = System.currentTimeMillis() - beginTime;
 
-        //保存日志
+        //保存日志（切点，时间，结果）
         saveSysLog(point, time, result);
 
         return result;
     }
 
     private void saveSysLog(ProceedingJoinPoint joinPoint, long time, Object obj) {
+        //joinPoint能获取方法的名称，方法的入参，方法的注解等各种各样的参数
+        //获得方法入参
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
-
+        //创建数据库保存对象
         LogDTO dto = new LogDTO();
+        //获取注解相关信息（是从方法的入参传过去的）
         AutoLog syslog = method.getAnnotation(AutoLog.class);
         if(syslog != null){
-            //update-begin-author:taoyan date:
-            String content = syslog.value();
-            if(syslog.module()== ModuleType.ONLINE){
+            String content = syslog.value();//注解的标志的内容
+            if(syslog.module()== ModuleType.ONLINE){//如果日志属于线上部分
                 content = getOnlineLogContent(obj, content);
             }
             //注解上的描述,操作日志内容
@@ -89,11 +104,16 @@ public class AutoLogAspect {
 
 
         //设置操作类型
-        if (dto.getLogType() == CommonConstant.LOG_TYPE_2) {
+        if (dto.getLogType() == CommonConstant.LOG_TYPE_2) {//如果为操作日志，根据方法名来获取方法类型
             dto.setOperateType(getOperateType(methodName, syslog.operateType()));
         }
 
         //获取request
+        /**
+         * 每一个请求都为一个线程
+         * 每一个线程都有唯一的request对象
+         * 通过IOC工具来获取这个request对象可以得到用户信息
+         */
         HttpServletRequest request = SpringContextUtils.getHttpServletRequest();
         //请求的参数
         dto.setRequestParam(getReqestParams(request,joinPoint));
@@ -115,6 +135,9 @@ public class AutoLogAspect {
 
 
     /**
+     * todo 4.22
+     * 根据方法的名称来定义操作
+     * 所以方法的定义一定要规范化
      * 获取操作类型
      */
     private int getOperateType(String methodName,int operateType) {
@@ -202,12 +225,15 @@ public class AutoLogAspect {
      * @return
      */
     private String getOnlineLogContent(Object obj, String content){
+        //判断是不是result对象
         if (Result.class.isInstance(obj)){
+            //强转
             Result res = (Result)obj;
+            //获取到信息
             String msg = res.getMessage();
             String tableName = res.getOnlTable();
             if(oConvertUtils.isNotEmpty(tableName)){
-                content+=",表名:"+tableName;
+                content+=",表名:"+tableName;//result存储了表的名称
             }
             if(res.isSuccess()){
                 content+= ","+(oConvertUtils.isEmpty(msg)?"操作成功":msg);

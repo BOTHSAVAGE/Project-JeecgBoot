@@ -11,6 +11,16 @@ import java.lang.annotation.*;
  * @Author scott
  * @email jeecgos@163.com
  * @Date 2019年1月14日
+ *
+ * todo 4.23
+ * 参数：
+ * value,
+ * logtype,
+ * operateType,
+ * module
+ *
+ * 注解参数的命名要使用的（）方法的符号
+ * 如果有默认值的话就在后面使用default
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
