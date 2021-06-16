@@ -10,16 +10,9 @@ import org.jeecg.common.util.SpringContextHolder;
 import org.springframework.stereotype.Component;
 
 /**
- * @author zyf
- * todo 4.22
- * 这个listener和receiver有什么关系
- * 作用是什么
- * listener为监听器
- * 这个接收器的目的在哪里
- * 为什么都是实现的onMessage
+ * @check bothsavage
+ * @lastUpdateTime 2021年6月16日
  *
- * 这个RedisReceiver是在RedisConfig中的commonListenerAdapter
- * 注入的
  */
 @Component
 @Data
@@ -28,7 +21,6 @@ public class RedisReceiver {
 
     /**
      * 接受消息并调用业务逻辑处理器
-     *
      * @param params
      */
     public void onMessage(BaseMap params) {
